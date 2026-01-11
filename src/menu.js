@@ -15,10 +15,8 @@ const showMenu = () => {
         const menuChoice = prompt('Choose an Action (1-3): ').trim();
         if (menuChoice === '1') {
             const userMove = prompt('Choose a move (rock, paper, or scissors): ');
-            // need to check valid input
             const winner = determineWinner(userMove);
             console.log(winner);
-
         } else if (menuChoice === '2') {
             viewStats();
         } else if (menuChoice === '3') {

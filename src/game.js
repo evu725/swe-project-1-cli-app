@@ -6,8 +6,9 @@ const game = [
     }
 ];
 
+const choices = ['rock', 'paper', 'scissors'];
+
 const computerChoice = () => {
-    const choices = ['rock', 'paper', 'scissors'];
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
@@ -17,7 +18,9 @@ const determineWinner = (userMove) => {
     console.log(`You chose: ${userMove}`);
     console.log(`Computer chose: ${computerMove}`);
 
-    if (userMove === computerMove) {
+    if (!choices.includes(userMove)) {
+        return `Invalid choice! Please choose rock, paper, or scissors.\n`;
+    } else if(userMove === computerMove) {
         game[0].ties++;
         return 'It is a tie!';
     } else if (
@@ -29,7 +32,7 @@ const determineWinner = (userMove) => {
         return `${userMove} beats ${computerMove}! You win!`;
     } else {
         game[0].losses++;
-        return `${computerMove} beats ${userMove}! You win!`;
+        return `${computerMove} beats ${userMove}! You lose!`;
     }
 }
 
@@ -37,6 +40,15 @@ const viewStats = () => {
     console.log(`Wins: ${game[0].wins}`);
     console.log(`Losses: ${game[0].losses}`);
     console.log(`Ties: ${game[0].ties}`);
+
+    const total = game.map(g => g.wins + g.losses + g.ties);
+    const totalGames = total[0];
+
+    console.log(`Total Games: ${totalGames}`);
+
+    const winRates = game.map(g => (g.wins / (g.wins + g.losses + g.ties)) * 100);
+    const winRate = Math.floor(winRates[0]);
+    console.log(`Win Rate: ${winRate}%`);
 }
 
 module.exports = { determineWinner, viewStats };
