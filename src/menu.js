@@ -18,13 +18,16 @@ const showMenu = () => {
             const winner = determineWinner(userMove);
             console.log(winner);
         } else if (menuChoice === '2') {
+            console.log('Current Statistics:');
             viewStats();
         } else if (menuChoice === '3') {
             isRunning = false;
         } else {
             console.log('Invalid option, try again.');
         }
-
+        
+        console.log("Final Statistics:");
+        viewStats();
         prompt('\nPress Enter to continue...');
         console.clear();
     }

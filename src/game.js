@@ -22,17 +22,17 @@ const determineWinner = (userMove) => {
         return `Invalid choice! Please choose rock, paper, or scissors.\n`;
     } else if(userMove === computerMove) {
         game[0].ties++;
-        return 'It is a tie!';
+        return 'It is a tie!\n';
     } else if (
         (userMove === 'rock' && computerMove === 'scissors') ||
         (userMove === 'paper' && computerMove === 'rock') ||
         (userMove === 'scissors' && computerMove === 'paper')
     ) {
         game[0].wins++;
-        return `${userMove} beats ${computerMove}! You win!`;
+        return `${userMove[0].toUpperCase() + userMove.slice(1)} beats ${computerMove}! You win!\n`;
     } else {
         game[0].losses++;
-        return `${computerMove} beats ${userMove}! You lose!`;
+        return `${computerMove[0].toUpperCase() + computerMove.slice(1)} beats ${userMove}! You lose!\n`;
     }
 }
 
