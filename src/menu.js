@@ -26,8 +26,11 @@ const showMenu = () => {
             console.log('Invalid option, try again.');
         }
         
-        console.log("Final Statistics:");
-        viewStats();
+        if (isRunning === false) {
+            console.log("Final Statistics:");
+            viewStats();
+        }
+
         prompt('\nPress Enter to continue...');
         console.clear();
     }
